@@ -1,4 +1,4 @@
-let SessionLoad = 1
+let SessionLoad = 1 
 let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-1 siso=-1
 let v:this_session=expand("<sfile>:p")
 silent only
