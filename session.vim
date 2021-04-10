@@ -11,8 +11,8 @@ set shortmess=aoO
 badd +11 client.py
 badd +1 server.py
 badd +14 index.html
-badd +61 index.js
-badd +8 index.css
+badd +79 index.js
+badd +37 index.css
 badd +84 ~/.config/nvim/init.vim
 argglobal
 %argdel
@@ -37,7 +37,7 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 15 - ((14 * winheight(0) + 13) / 27)
+let s:l = 15 - ((11 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -63,11 +63,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 97 - ((15 * winheight(0) + 13) / 27)
+let s:l = 79 - ((15 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 97
+keepjumps 79
 normal! 0
 lcd ~/Desktop/New\ folder
 tabnext
@@ -89,14 +89,14 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 2 - ((1 * winheight(0) + 13) / 27)
+let s:l = 37 - ((17 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 2
+keepjumps 37
 normal! 0
 lcd ~/Desktop/New\ folder
-tabnext 1
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

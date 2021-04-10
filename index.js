@@ -1,6 +1,7 @@
 const taskListElement = document.getElementById("task-list")
+const currentTaskElement = document.getElementById("current-task")
 const taskLblInput = document.getElementById("task-label-input")
-const taskImgInput = document.getElementById("task-image-input")
+const taskAlertInput = document.getElementById("task-alert-input")
 const taskMsgInput = document.getElementById("task-message-input")
 const taskIntervalInput = document.getElementById("task-interval-input")
 const taskAddBtn = document.getElementById("task-add-btn")
@@ -15,12 +16,12 @@ taskAddBtn.onclick = () => {
   const label = taskLblInput.value;
   const interval = Number.isInteger(parseInt(taskIntervalInput.value)) ? taskIntervalInput.value : 60;
   const message = taskMsgInput.value;
-  const image = taskImgInput.value;
+  const alertAudio = taskAlertInput.value;
   taskLblInput.value = "";
   taskIntervalInput.value = "";
   taskMsgInput.value = "";
-  taskImgInput.value = "";
-  addTask(label, message, interval, image);
+  taskAlertInput.value = "";
+  addTask(label, message, interval, alertAudio);
 }
 
 function completeTask(task)
@@ -51,15 +52,15 @@ function showTask(task)
   markDoneButton.textContent = "DONE";
   separator.style.margin = "0.5rem 0";
 
-  document.body.appendChild(container);
+  currentTaskElement.appendChild(container);
   container.appendChild(label);
   container.appendChild(message);
   container.appendChild(separator);
   container.appendChild(markDoneButton);
-  //play ding
-  const dingAudio = document.createElement("audio");
-  dingAudio.src = "ding.mp3";
-  dingAudio.play();
+  //play alert audio
+  const alertAudio = document.createElement("audio");
+  alertAudio.src = task.alertAudio;
+  alertAudio.play();
 }
 
 function countDown()
@@ -129,20 +130,39 @@ function removeTask(task)
   task.containerElement.remove();
 }
 
-function addTask(label, message, interval, image)
+function addTask(label, message, interval, alertAudio)
 {
   const task = {        //task object
     label: label,
     interval: interval,
     timeLeft: interval,
     message: message,
-    image: image,
+    alertAudio: "ding.mp3",
     barElement: null,
     containerElement: null,
     timeLeftLabel: null
   }
-  taskList.push(task);
-  addTaskElement(task);
+  //check if alertAudio is valid
+  if(alertAudio == "") {
+      taskList.push(task);
+      addTaskElement(task);
+      return;
+  }
+  fetch(alertAudio)
+    .then(res => res.blob())
+    .then(blob => {
+      if(blob && 
+        (alertAudio.endsWith("wav") || 
+         alertAudio.endsWith("mp3")))
+      {
+        task.alertAudio = alertAudio;
+      }
+    })
+    .catch(() => console.log("Task Alert URL is not correct!"))
+    .finally(() => {
+      taskList.push(task);
+      addTaskElement(task);
+    })
 }
 
 String.prototype.toHHMMSS = function () {
