@@ -5,7 +5,10 @@ body{
   width: 150px;
 }
 
-.task-timeLeftLabel{}
+.task-timeLeftLabel{
+  position: absolute;
+  padding-left: 0.25rem;
+}
 .task-message{
   height: 60%;
   overflow-y: scroll;
@@ -45,6 +48,8 @@ body{
   width: 100%;
   height: 15%;
   border: black 1px solid;
+  display: flex;
+  align-items: center;
 }
 .task-barInner{
   background-color: lightgreen;

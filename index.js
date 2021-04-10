@@ -25,6 +25,7 @@ taskAddBtn.onclick = () => {
 
 function completeTask(task)
 {
+  task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
   task.barElement.style.width = "0%";
   isCompletingTask = false;
   document.getElementById("current-task-container").remove();
@@ -72,7 +73,7 @@ function countDown()
       task.timeLeft--;
       const percentage = (task.interval-task.timeLeft)/task.interval * 100 + "%";
       task.barElement.style.width = percentage;
-      console.log(percentage);
+      task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
     }
     else //task is completed
     {
@@ -107,17 +108,19 @@ function addTaskElement(task)  //task object
   barInner.style.width = "0%";
   removeTaskButton.textContent = "x";
   removeTaskButton.onclick = () => removeTask(task);
+  timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
 
   taskListElement.appendChild(container);
   container.appendChild(removeTaskButton);
   container.appendChild(barOuter);
+  barOuter.appendChild(timeLeftLabel);
   barOuter.appendChild(barInner);
   container.appendChild(label);
   container.appendChild(message);
-  barOuter.appendChild(timeLeftLabel);
 
   task.barElement = barInner;
   task.containerElement = container;
+  task.timeLeftLabel = timeLeftLabel;
 }
 
 function removeTask(task)
@@ -136,8 +139,20 @@ function addTask(label, message, interval, image)
     image: image,
     barElement: null,
     containerElement: null,
+    timeLeftLabel: null
   }
   taskList.push(task);
   addTaskElement(task);
 }
 
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
