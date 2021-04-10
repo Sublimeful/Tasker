@@ -1,0 +1,88 @@
+body{
+  padding: 0 1rem;
+}
+.task-input{
+  width: 150px;
+}
+
+.task-timeLeftLabel{}
+.task-message{
+  height: 60%;
+  overflow-y: scroll;
+}
+.task-remove{
+  position: absolute;
+  margin: -1.25rem;
+  background-color: red;
+}
+.task-message::-webkit-scrollbar{
+  width: 5px;
+  background: lightgray;
+  border-radius: 10px;
+}
+.task-message::-webkit-scrollbar-thumb {
+  background: #5e5e5e; 
+  border-radius: 10px;
+}
+#task-list{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+.task-container{
+  white-space: normal;
+  width: 305px;
+  height: 200px;
+}
+.task-label{
+  height: 25%;
+  font-size: 24px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.task-barOuter{
+  width: 100%;
+  height: 15%;
+  border: black 1px solid;
+}
+.task-barInner{
+  background-color: lightgreen;
+  height: 100%;
+}
+
+#current-task-container{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 25%;
+  top: 25%;
+  width: 50vw;
+  height: 50vh;
+  background-color: #00d1b2;
+  color: white;
+  padding: 0.5rem;
+}
+#current-task-done-btn{}
+#current-task-label{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 0 1rem;
+}
+#current-task-msg{
+  overflow-y: scroll;
+  padding: 0 1rem;
+  height: 70%;
+}
+#current-task-msg::-webkit-scrollbar{
+  width: 5px;
+  background: lightgreen;
+  border-radius: 10px;
+}
+#current-task-msg::-webkit-scrollbar-thumb {
+  background: #37cc6e; 
+  border-radius: 10px;
+}
