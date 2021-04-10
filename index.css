@@ -78,7 +78,7 @@ body{
   color: white;
   padding: 0.5rem;
   min-width: 305px;
-  min-height: 245px;
+  min-height: 220px;
 }
 #current-task-done-btn{}
 #current-task-label{
