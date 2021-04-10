@@ -60,8 +60,8 @@ function showTask(task)
   //play alert audio
   const alertAudio = document.createElement("audio");
   alertAudio.src = task.alertAudio;
-  //if audio cannot be played, then default to ding.mp3
   const promise = alertAudio.play();
+  //if audio cannot be played, then default to ding.mp3
   promise.catch(() => {
     alertAudio.src = "ding.mp3";
     alertAudio.play();
