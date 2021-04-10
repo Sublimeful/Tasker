@@ -60,7 +60,14 @@ function showTask(task)
   //play alert audio
   const alertAudio = document.createElement("audio");
   alertAudio.src = task.alertAudio;
-  alertAudio.play();
+  //if audio cannot be played, then default to ding.mp3
+  const promise = alertAudio.play();
+  promise.catch(() => {
+    alertAudio.src = "ding.mp3";
+    alertAudio.play();
+  })
+  //remove audio element
+  alertAudio.remove();
 }
 
 function countDown()
