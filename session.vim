@@ -10,9 +10,9 @@ endif
 set shortmess=aoO
 badd +11 client.py
 badd +1 server.py
-badd +14 index.html
-badd +79 index.js
-badd +37 index.css
+badd +11 index.html
+badd +66 index.js
+badd +71 index.css
 badd +84 ~/.config/nvim/init.vim
 argglobal
 %argdel
@@ -37,12 +37,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 15 - ((11 * winheight(0) + 13) / 27)
+let s:l = 20 - ((10 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 15
-normal! 0
+keepjumps 20
+normal! 031|
 lcd ~/Desktop/New\ folder
 tabnext
 edit ~/Desktop/New\ folder/index.js
@@ -63,12 +63,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 79 - ((15 * winheight(0) + 13) / 27)
+let s:l = 67 - ((14 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 79
-normal! 0
+keepjumps 67
+normal! 022|
 lcd ~/Desktop/New\ folder
 tabnext
 edit ~/Desktop/New\ folder/index.css
@@ -89,12 +89,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 37 - ((17 * winheight(0) + 13) / 27)
+let s:l = 71 - ((26 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 37
-normal! 0
+keepjumps 71
+normal! 021|
 lcd ~/Desktop/New\ folder
 tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
