@@ -107,7 +107,6 @@ function addTaskElement(task)  //task object
   label.textContent = task.label;
   message.textContent = task.message;
   barInner.style.width = "0%";
-  removeTaskButton.textContent = "x";
   removeTaskButton.onclick = () => removeTask(task);
   timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
 
