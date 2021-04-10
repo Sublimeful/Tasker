@@ -1,4 +1,4 @@
-const taskListElement = document.getElementById("task-list")
+const taskListElement = document.getElementById("task-list") 
 const taskLblInput = document.getElementById("task-label-input")
 const taskImgInput = document.getElementById("task-image-input")
 const taskMsgInput = document.getElementById("task-message-input")
