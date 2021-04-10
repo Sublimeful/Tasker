@@ -4,6 +4,9 @@ body{
 .task-input{
   width: 150px;
 }
+::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
 
 .task-timeLeftLabel{
   position: absolute;
