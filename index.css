@@ -76,14 +76,16 @@ body{
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 50vh;
+  height: 65vh;
   background-color: #00d1b2;
   color: white;
   padding: 0.5rem;
   min-width: 305px;
   min-height: 245px;
 }
-#current-task-done-btn{}
+#current-task-done-btn{
+  height: 3rem;
+}
 #current-task-label{
   text-overflow: ellipsis;
   white-space: nowrap;

@@ -12,7 +12,7 @@ badd +11 client.py
 badd +1 server.py
 badd +11 index.html
 badd +69 index.js
-badd +50 index.css
+badd +7 index.css
 badd +84 ~/.config/nvim/init.vim
 argglobal
 %argdel
@@ -89,11 +89,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 7 - ((6 * winheight(0) + 13) / 27)
+let s:l = 89 - ((20 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
+keepjumps 89
 normal! 0
 lcd ~/Desktop/New\ folder
 tabnext 3
