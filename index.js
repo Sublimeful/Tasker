@@ -22,6 +22,8 @@ taskAddBtn.onclick = () => {
   const message = taskMsgInput.value;
   const alertAudio = taskAlertInput.value;
 
+  if(label == "") label = " ";
+
   addTask(label, message, interval, alertAudio);
 }
 
