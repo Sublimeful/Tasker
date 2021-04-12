@@ -14,6 +14,8 @@ const taskList = [];
 
 var isCompletingTask = false;
 
+
+
 taskAddBtn.onclick = () => {
   if(taskLblInput.value == "") return;
   const label = taskLblInput.value;
