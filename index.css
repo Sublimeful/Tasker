@@ -62,7 +62,7 @@ body{
   height: 100%;
 }
 
-#current-task{
+#task-popup-list{
   pointer-events: none;
   display: flex;
   position: fixed;
@@ -73,7 +73,7 @@ body{
   top: 0;
   left: 0;
 }
-#current-task-container{
+#task-popup-container{
   pointer-events: all;
   position: fixed;
   display: flex;
@@ -86,10 +86,10 @@ body{
   min-width: 305px;
   min-height: 245px;
 }
-#current-task-done-btn{
+#task-popup-done-btn{
   height: 3rem;
 }
-#current-task-label{
+#task-popup-label{
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -97,17 +97,17 @@ body{
   font-weight: 600;
   padding: 0 1rem;
 }
-#current-task-msg{
+#task-popup-msg{
   overflow-y: scroll;
   padding: 0 1rem;
   height: 70%;
 }
-#current-task-msg::-webkit-scrollbar{
+#task-popup-msg::-webkit-scrollbar{
   width: 5px;
   background: lightgreen;
   border-radius: 10px;
 }
-#current-task-msg::-webkit-scrollbar-thumb {
+#task-popup-msg::-webkit-scrollbar-thumb {
   background: #37cc6e; 
   border-radius: 10px;
 }

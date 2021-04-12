@@ -1,5 +1,5 @@
 const taskListElement = document.getElementById("task-list")
-const currentTaskElement = document.getElementById("current-task")
+const taskPopupListElement = document.getElementById("task-popup-list")
 const taskLblInput = document.getElementById("task-label-input")
 const taskAlertInput = document.getElementById("task-alert-input")
 const taskMsgInput = document.getElementById("task-message-input")
@@ -9,6 +9,7 @@ const taskPersistent = document.getElementById("task-persistent")
 const taskBlockable = document.getElementById("task-blockable")
 
 const taskList = [];
+const taskPopupList = [];
 
 var isCompletingTask = false;
 //constantly update timers at 60fps
@@ -32,8 +33,14 @@ taskAddBtn.onclick = () => {
 
 function completeTask(task)
 {
-  isCompletingTask = false;
-  document.getElementById("current-task-container").remove();
+  //remove the task from the popup list
+  //if there are no popups left in list
+  //then user does not have anymore tasks to complete
+  taskPopupList.splice(taskPopupList.indexOf(task), 1);
+  if(taskPopupList.length == 0) isCompletingTask = false;
+
+  //remove the popup container
+  document.getElementById("task-popup-container").remove();
 }
 
 function showTask(task)
@@ -43,10 +50,10 @@ function showTask(task)
   const label = document.createElement("h1");
   const message = document.createElement("h2");
   const separator = document.createElement("hr");
-  container.id = "current-task-container"
-  markDoneButton.id = "current-task-done-btn"
-  label.id = "current-task-label"
-  message.id = "current-task-msg"
+  container.id = "task-popup-container"
+  markDoneButton.id = "task-popup-done-btn"
+  label.id = "task-popup-label"
+  message.id = "task-popup-msg"
   container.className = "box is-primary"
   markDoneButton.className= "button is-success"
 
@@ -56,7 +63,7 @@ function showTask(task)
   markDoneButton.textContent = "DONE";
   separator.style.margin = "0.5rem 0";
 
-  currentTaskElement.appendChild(container);
+  taskPopupListElement.appendChild(container);
   container.appendChild(label);
   container.appendChild(message);
   container.appendChild(separator);
@@ -90,7 +97,6 @@ function update()
 
     if(task.timeLeft > 0)
     {
-      //calculate time left
       if(task.pause)
       {
         //get the diff between now and time paused
@@ -100,6 +106,7 @@ function update()
         task.start = task.start + (Date.now() - task.pause);
         task.pause = null;
       }
+      //calculate time left
       const delta = Date.now() - task.start;
       task.timeLeft = task.interval - Math.floor(delta/1000);
 
@@ -120,6 +127,7 @@ function update()
 
       //show the task
       isCompletingTask = true;
+      taskPopupList.push(task);
       showTask(task);
 
       //if task is not persistent, remove task

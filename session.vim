@@ -8,9 +8,10 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +12 index.css
+badd +19 index.css
 badd +25 index.html
-badd +85 index.js
+badd +12 index.js
+badd +7 man://bash_builtins(1)
 argglobal
 %argdel
 tabnew
@@ -34,37 +35,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 19 - ((18 * winheight(0) + 18) / 36)
+let s:l = 19 - ((14 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 19
-normal! 0
-lcd ~/Desktop/Tasker
-tabnext
-edit ~/Desktop/Tasker/index.html
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=0
-set winheight=1
-set winminwidth=0
-set winwidth=1
-argglobal
-setlocal fdm=marker
-setlocal fde=0
-setlocal fmr=<--,-->
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 25 - ((18 * winheight(0) + 18) / 36)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 25
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext
@@ -86,14 +61,40 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 96 - ((29 * winheight(0) + 18) / 36)
+let s:l = 141 - ((6 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 96
+keepjumps 141
 normal! 0
 lcd ~/Desktop/Tasker
-tabnext 3
+tabnext
+edit ~/Desktop/Tasker/index.html
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+setlocal fdm=marker
+setlocal fde=0
+setlocal fmr=<--,-->
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 25 - ((14 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 25
+normal! 0
+lcd ~/Desktop/Tasker
+tabnext 2
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
