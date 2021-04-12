@@ -18,7 +18,7 @@ var isCompletingTask = false;
 
 taskAddBtn.onclick = () => {
   // a label is required (otherwise the showtask gui will look messed up)
-  if(taskLblInput.value == "") return;
+  if(taskLblInput.value.trim() == "") return;
 
   //extract inputs
   const label = taskLblInput.value;
