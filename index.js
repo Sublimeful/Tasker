@@ -88,11 +88,11 @@ function countDown()
     }
     else //task is completed
     {
+      task.barElement.style.width = "0%";
+      task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
       task.timeLeft = task.interval;
       isCompletingTask = true;
       showTask(task);
-      task.barElement.style.width = "0%";
-      task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
       break;
     }
   }
