@@ -63,7 +63,6 @@ function showTask(task)
   container.appendChild(message);
   container.appendChild(separator);
   container.appendChild(markDoneButton);
-
   //play alert audio
   const alertAudio = document.createElement("audio");
   alertAudio.src = task.alertAudio;
