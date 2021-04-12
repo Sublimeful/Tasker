@@ -63,15 +63,18 @@ function showTask(task)
   container.appendChild(message);
   container.appendChild(separator);
   container.appendChild(markDoneButton);
+
   //play alert audio
   const alertAudio = document.createElement("audio");
   alertAudio.src = task.alertAudio;
   const promise = alertAudio.play();
+
   //if audio cannot be played, then default to ding.mp3
   promise.catch(() => {
     alertAudio.src = "ding.mp3";
     alertAudio.play();
   })
+
   //remove audio element
   alertAudio.remove();
 }
