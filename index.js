@@ -7,8 +7,9 @@ const taskIntervalInput = document.getElementById("task-interval-input")
 const taskAddBtn = document.getElementById("task-add-btn")
 const taskPersistent = document.getElementById("task-persistent")
 const taskBlockable = document.getElementById("task-blockable")
-const timer = setInterval(countDown, 1000);
 
+//timer on 100 millisecond checking interval
+const timer = setInterval(countDown, 100);
 const taskList = [];
 
 var isCompletingTask = false;
@@ -81,18 +82,29 @@ function countDown()
     if(isCompletingTask && task.isBlockable) continue;
     if(task.timeLeft > 0)
     {
-      task.timeLeft--;
+      //calculate time left
+      const delta = Date.now() - task.start;
+      task.timeLeft = task.interval - Math.floor(delta/1000);
+
+      //calculate percentage and change the bar accordingly
       const percentage = (task.interval-task.timeLeft)/task.interval * 100 + "%";
-      task.barElement.style.width = percentage;
       task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
+      task.barElement.style.width = percentage;
     }
     else //task is completed
     {
+      //reset the clock
+      task.start = Date.now();
       task.timeLeft = task.interval;
+
+      //set the bar accordingly
       task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
       task.barElement.style.width = "0%";
+
+      //show the task
       isCompletingTask = true;
       showTask(task);
+
       break;
     }
   }
@@ -152,7 +164,8 @@ function addTask(label, message, interval, alertAudio)
     containerElement: null,
     timeLeftLabel: null,
     isPersistent: taskPersistent.checked,
-    isBlockable: taskBlockable.checked
+    isBlockable: taskBlockable.checked,
+    start: Date.now()
   }
   //check if alertAudio is valid
   if(alertAudio == "") {

@@ -8,9 +8,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +1 index.css
+badd +12 index.css
 badd +7 index.html
-badd +163 index.js
+badd +29 index.js
 argglobal
 %argdel
 tabnew
@@ -34,11 +34,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 13) / 27)
+let s:l = 19 - ((18 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 19
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext
@@ -60,11 +60,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 7 - ((0 * winheight(0) + 13) / 27)
+let s:l = 25 - ((14 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 7
+keepjumps 25
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext
@@ -86,11 +86,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 163 - ((24 * winheight(0) + 13) / 27)
+let s:l = 96 - ((18 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 163
+keepjumps 96
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext 3
