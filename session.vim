@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 badd +12 index.css
 badd +25 index.html
-badd +18 index.js
+badd +21 index.js
 argglobal
 %argdel
 tabnew
@@ -86,12 +86,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 33 - ((17 * winheight(0) + 13) / 27)
+let s:l = 34 - ((18 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 33
-normal! 017|
+keepjumps 34
+normal! 0
 lcd ~/Desktop/Tasker
 tabnext 3
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'

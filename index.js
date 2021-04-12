@@ -81,10 +81,25 @@ function countDown()
   for(var i = 0; i < taskList.length; i++)
   {
     const task = taskList[i];
-    if(isCompletingTask && task.isBlockable) continue;
+    //if task can be blocked and it is not paused
+    if(isCompletingTask && task.isBlockable)
+    {
+      if(!task.pause) task.pause = Date.now();
+      continue;
+    }
+
     if(task.timeLeft > 0)
     {
       //calculate time left
+      if(task.pause)
+      {
+        //get the diff between now and time paused
+        //and add it to start time, effectively offsetting
+        //start time by moving it closer to current time
+        //and removing the time that was paused
+        task.start = task.start + (Date.now() - task.pause);
+        task.pause = null;
+      }
       const delta = Date.now() - task.start;
       task.timeLeft = task.interval - Math.floor(delta/1000);
 
@@ -170,7 +185,8 @@ function addTask(label, message, interval, alertAudio)
     timeLeftLabel: null,
     isPersistent: taskPersistent.checked,
     isBlockable: taskBlockable.checked,
-    start: Date.now()
+    start: Date.now(),
+    pause: null
   }
   //check if alertAudio is valid
   if(alertAudio == "") {
