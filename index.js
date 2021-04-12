@@ -12,8 +12,8 @@ const taskList = [];
 const taskPopupList = [];
 
 var isCompletingTask = false;
-//start updating
-update()
+//start update function
+update();
 
 
 

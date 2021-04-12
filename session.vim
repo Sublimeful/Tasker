@@ -64,11 +64,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 108 - ((7 * winheight(0) + 13) / 27)
+let s:l = 26 - ((25 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 108
+keepjumps 26
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext
