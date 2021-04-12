@@ -10,7 +10,7 @@ endif
 set shortmess=aoO
 badd +12 index.css
 badd +25 index.html
-badd +21 index.js
+badd +85 index.js
 argglobal
 %argdel
 tabnew
@@ -34,7 +34,7 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 19 - ((14 * winheight(0) + 13) / 27)
+let s:l = 19 - ((18 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -60,7 +60,7 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 25 - ((14 * winheight(0) + 13) / 27)
+let s:l = 25 - ((18 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -86,11 +86,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 34 - ((18 * winheight(0) + 13) / 27)
+let s:l = 96 - ((29 * winheight(0) + 18) / 36)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 34
+keepjumps 96
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext 3

@@ -8,11 +8,11 @@ const taskAddBtn = document.getElementById("task-add-btn")
 const taskPersistent = document.getElementById("task-persistent")
 const taskBlockable = document.getElementById("task-blockable")
 
-//timer on 100 millisecond checking interval
-const timer = setInterval(countDown, 100);
 const taskList = [];
 
 var isCompletingTask = false;
+//constantly update timers at 60fps
+requestAnimationFrame(update);
 
 
 
@@ -76,7 +76,7 @@ function showTask(task)
   alertAudio.remove();
 }
 
-function countDown()
+function update()
 {
   for(var i = 0; i < taskList.length; i++)
   {
@@ -128,6 +128,8 @@ function countDown()
       break;
     }
   }
+  //constantly update timers at 60fps
+  requestAnimationFrame(update);
 }
 
 function addTaskElement(task)  //task object
