@@ -12,8 +12,8 @@ const taskList = [];
 const taskPopupList = [];
 
 var isCompletingTask = false;
-//constantly update timers at 60fps
-requestAnimationFrame(update);
+//start updating
+update()
 
 
 
@@ -136,8 +136,8 @@ function update()
       break;
     }
   }
-  //constantly update timers at 60fps
-  requestAnimationFrame(update);
+  //recursively updates after 100 milliseconds
+  setTimeout(update, 100);
 }
 
 function addTaskElement(task)  //task object

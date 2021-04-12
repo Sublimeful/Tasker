@@ -8,16 +8,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +19 index.css
+badd +65 index.css
 badd +25 index.html
-badd +12 index.js
+badd +66 index.js
 badd +7 man://bash_builtins(1)
 argglobal
 %argdel
 tabnew
 tabnew
+tabnew
 tabrewind
-edit index.css
+edit index.html
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -27,6 +28,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
+balt index.css
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr=<--,-->
@@ -35,11 +37,38 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 19 - ((14 * winheight(0) + 13) / 27)
+let s:l = 30 - ((19 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
+keepjumps 30
+normal! 0
+lcd ~/Desktop/Tasker
+tabnext
+edit ~/Desktop/Tasker/index.js
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+balt ~/Desktop/Tasker/index.css
+setlocal fdm=marker
+setlocal fde=0
+setlocal fmr=<--,-->
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 108 - ((7 * winheight(0) + 13) / 27)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 108
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext
@@ -61,11 +90,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 141 - ((6 * winheight(0) + 13) / 27)
+let s:l = 66 - ((13 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 141
+keepjumps 66
 normal! 0
 lcd ~/Desktop/Tasker
 tabnext
