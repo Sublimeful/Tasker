@@ -88,9 +88,9 @@ function countDown()
     }
     else //task is completed
     {
-      task.barElement.style.width = "0%";
-      task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
       task.timeLeft = task.interval;
+      task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
+      task.barElement.style.width = "0%";
       isCompletingTask = true;
       showTask(task);
       break;
