@@ -17,8 +17,6 @@ var isCompletingTask = false;
 
 
 taskAddBtn.onclick = () => {
-  if(taskLblInput.value == "") return;
-
   const label = taskLblInput.value;
   const interval = Number.isInteger(parseInt(taskIntervalInput.value)) ? taskIntervalInput.value : 60;
   const message = taskMsgInput.value;
