@@ -5,6 +5,7 @@ const taskAlertInput = document.getElementById("task-alert-input")
 const taskMsgInput = document.getElementById("task-message-input")
 const taskIntervalInput = document.getElementById("task-interval-input")
 const taskAddBtn = document.getElementById("task-add-btn")
+const taskPersistent = document.getElementById("task-persistent")
 const timer = setInterval(countDown, 1000);
 
 const taskList = [];
@@ -34,6 +35,9 @@ function completeTask(task)
 
 function showTask(task)
 {
+  //if task is not persistent, remove task
+  if(!task.isPersistent) removeTask(task);
+
   const container = document.createElement("div");
   const markDoneButton = document.createElement("button");
   const label = document.createElement("h1");
@@ -146,7 +150,8 @@ function addTask(label, message, interval, alertAudio)
     alertAudio: "ding.mp3",
     barElement: null,
     containerElement: null,
-    timeLeftLabel: null
+    timeLeftLabel: null,
+    isPersistent: taskPersistent.checked
   }
   //check if alertAudio is valid
   if(alertAudio == "") {

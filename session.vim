@@ -3,23 +3,20 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd ~/Desktop/New\ folder
+cd ~/Desktop/Tasker
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +11 client.py
-badd +1 server.py
-badd +11 index.html
-badd +69 index.js
-badd +7 index.css
-badd +84 ~/.config/nvim/init.vim
+badd +1 index.css
+badd +7 index.html
+badd +163 index.js
 argglobal
 %argdel
 tabnew
 tabnew
 tabrewind
-edit index.html
+edit index.css
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -37,15 +34,15 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 17 - ((13 * winheight(0) + 13) / 27)
+let s:l = 1 - ((0 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
+keepjumps 1
 normal! 0
-lcd ~/Desktop/New\ folder
+lcd ~/Desktop/Tasker
 tabnext
-edit ~/Desktop/New\ folder/index.js
+edit ~/Desktop/Tasker/index.html
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -63,15 +60,15 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 69 - ((16 * winheight(0) + 13) / 27)
+let s:l = 7 - ((0 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 69
+keepjumps 7
 normal! 0
-lcd ~/Desktop/New\ folder
+lcd ~/Desktop/Tasker
 tabnext
-edit ~/Desktop/New\ folder/index.css
+edit ~/Desktop/Tasker/index.js
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -89,13 +86,13 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 89 - ((20 * winheight(0) + 13) / 27)
+let s:l = 163 - ((24 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 89
+keepjumps 163
 normal! 0
-lcd ~/Desktop/New\ folder
+lcd ~/Desktop/Tasker
 tabnext 3
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
