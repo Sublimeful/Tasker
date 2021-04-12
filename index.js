@@ -37,9 +37,6 @@ function completeTask(task)
 
 function showTask(task)
 {
-  //if task is not persistent, remove task
-  if(!task.isPersistent) removeTask(task);
-
   const container = document.createElement("div");
   const markDoneButton = document.createElement("button");
   const label = document.createElement("h1");
@@ -108,6 +105,9 @@ function countDown()
       //show the task
       isCompletingTask = true;
       showTask(task);
+
+      //if task is not persistent, remove task
+      if(!task.isPersistent) removeTask(task);
 
       break;
     }
