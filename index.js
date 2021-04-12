@@ -6,6 +6,7 @@ const taskMsgInput = document.getElementById("task-message-input")
 const taskIntervalInput = document.getElementById("task-interval-input")
 const taskAddBtn = document.getElementById("task-add-btn")
 const taskPersistent = document.getElementById("task-persistent")
+const taskBlockable = document.getElementById("task-blockable")
 const timer = setInterval(countDown, 1000);
 
 const taskList = [];
@@ -27,8 +28,6 @@ taskAddBtn.onclick = () => {
 
 function completeTask(task)
 {
-  task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
-  task.barElement.style.width = "0%";
   isCompletingTask = false;
   document.getElementById("current-task-container").remove();
 }
@@ -76,10 +75,10 @@ function showTask(task)
 
 function countDown()
 {
-  if(isCompletingTask) return;
   for(var i = 0; i < taskList.length; i++)
   {
     const task = taskList[i];
+    if(isCompletingTask && task.isBlockable) continue;
     if(task.timeLeft > 0)
     {
       task.timeLeft--;
@@ -89,10 +88,11 @@ function countDown()
     }
     else //task is completed
     {
-      task.barElement.style.width = "100%";
       task.timeLeft = task.interval;
       isCompletingTask = true;
       showTask(task);
+      task.barElement.style.width = "0%";
+      task.timeLeftLabel.textContent = (task.timeLeft).toString().toHHMMSS();
       break;
     }
   }
@@ -151,7 +151,8 @@ function addTask(label, message, interval, alertAudio)
     barElement: null,
     containerElement: null,
     timeLeftLabel: null,
-    isPersistent: taskPersistent.checked
+    isPersistent: taskPersistent.checked,
+    isBlockable: taskBlockable.checked
   }
   //check if alertAudio is valid
   if(alertAudio == "") {

@@ -7,6 +7,9 @@ body{
 ::-webkit-scrollbar-corner {
   background: rgba(0,0,0,0);
 }
+.box:not(:last-child){
+  margin-bottom: 0;
+}
 
 .task-timeLeftLabel{
   position: absolute;
